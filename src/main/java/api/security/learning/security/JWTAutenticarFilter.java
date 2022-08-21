@@ -9,7 +9,6 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
@@ -34,15 +33,14 @@ public class JWTAutenticarFilter extends UsernamePasswordAuthenticationFilter {
 	*/
 	public static final String TOKEN_SENHA = "61e6e029-e1fc-4918-b47e-5765f46ebf53";
 	
-	@Autowired
-	AuthenticationManager authenticationManager;
+//	@Autowired
+//	AuthenticationManager authenticationManager;
 
-//	private final AuthenticationManager authenticationManager;
-//
-//	public JWTAutenticarFilter(AuthenticationManager authenticationManager) {
-//		super();
-//		this.authenticationManager = authenticationManager;
-//	}
+	private final AuthenticationManager authenticationManager;
+
+	public JWTAutenticarFilter(AuthenticationManager authenticationManager) {
+		this.authenticationManager = authenticationManager;
+	}
 
 	@Override
 	public Authentication attemptAuthentication(HttpServletRequest request, HttpServletResponse response)
